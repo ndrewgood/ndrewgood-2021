@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;600;700&display=swap');
+
+//
+// VARIABLES
+//
+
+$type-color: #000000;
+
+html, body {
+    margin: 0;
+    font-size: 10px;
+}
+
+//
+// TYPE
+//
+
+p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: $type-color;
+}
+
+h1 {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: $type-color
+}
+
+a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border-bottom: 1px dotted;
+    text-decoration: none; 
+    opacity: .5;
+    color: $type-color;
+    transition: .2s;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+//
+// BACKGROUND COLORS
+//
+
+.bg-tan {
+    background-color: #EADAD0;
+}
+
+.bg-green {
+    background-color: #C9DCC4;
+}
+
+
+// TEMP

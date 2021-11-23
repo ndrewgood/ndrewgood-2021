@@ -6,6 +6,19 @@
 
  module.exports = {
     /* Your site config here */
-    plugins: [],
+    plugins: [
+      `gatsby-plugin-react-helmet`,
+      `gatsby-plugin-image`,
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `images`,
+          path: `${__dirname}/src/assets/img`,
+        },
+      },
+      `gatsby-transformer-sharp`,
+      `gatsby-plugin-sharp`,
+      `gatsby-plugin-sass`
+    ],
   }
   
