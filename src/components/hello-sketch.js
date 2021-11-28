@@ -12,7 +12,8 @@ const HelloSketch = () => {
     const word = "Hello!"
 
     // Variables - Time
-    const counter = 200;
+    const counter = 150;
+    const movetime = counter / 2
     let countertime = 0;
 
     // Ease Function
@@ -49,6 +50,8 @@ const HelloSketch = () => {
             this.easy = 0; // y pos after easing
             this.letter = letter; // letter content
             this.i = i; // array pos
+            this.mx = 0;
+            this.my = 0;
         }
 
         // Change position
@@ -60,23 +63,31 @@ const HelloSketch = () => {
             this.cx = this.nx;
             this.cy = this.ny;
             // find "random" new pos (split into overlapping columns)
-            this.nx = this.p5.random(this.p5.constrain(((width/word.length)*this.i) + width/40, 0, width), this.p5.constrain(((width/word.length)*(this.i+1)) - width/40, 0, width));
-            this.ny = this.p5.random(40, height-40);
+            if ((this.mx > this.easex - 20 && this.mx < this.easex + 20) && (this.my > this.easey - 20 && this.my < this.easey + 20)) {
+                this.nx = this.x + 0.1;
+                this.ny = this.y + 0.1;
+            } else {
+                this.nx = this.p5.random(this.p5.constrain(((width/word.length)*this.i) + width/40, 0, width), this.p5.constrain(((width/word.length)*(this.i+1)) - width/40, 0, width));
+                this.ny = this.p5.random(40, height-40);
+            }
             // find velocity between initial and new pos that fits in time counter
-            this.tickx = (this.nx - this.x) / (counter/2);
-            this.ticky = (this.ny - this.y) / (counter/2);
+            this.tickx = (this.nx - this.x) / movetime;
+            this.ticky = (this.ny - this.y) / movetime;
 
         }
 
         // Display Letter
-        show() {
+        show(mx, my) {
             // creates linear path between initial and new pos
             this.cx += this.tickx;
             this.cy += this.ticky;
 
+            this.mx = mx;
+            this.my = my;
+
             // first half of counter, moves letter to new position
             // second half of counter, letter keeps position
-            if(countertime < counter/2) {
+            if(countertime < movetime) {
                 this.easex = ease(this.cx, this.x, this.nx, this.x, this.nx);
                 this.easey = ease(this.cy, this.y, this.ny, this.y, this.ny);
             } else {
@@ -87,12 +98,16 @@ const HelloSketch = () => {
             // draws letter
             this.p5.fill(234,218,208);
             this.p5.ellipse(this.easex, this.easey, 40);
-            // this.p5.fill(0,0,0);
-            this.p5.fill(246,37,6);
+
             this.p5.textSize(18);
             this.p5.textAlign(this.p5.CENTER, this.p5.CENTER);
             this.p5.textFont("Courier Prime");
             this.p5.textStyle(this.p5.ITALIC);
+            if ((this.mx > this.easex - 20 && this.mx < this.easex + 20) && (this.my > this.easey - 20 && this.my < this.easey + 20)) {
+                this.p5.fill(246,37,6);
+            } else {
+                this.p5.fill(0,0,0);
+            }
             this.p5.text(this.letter, this.easex, this.easey);
             // this.p5.ellipse(this.easex, this.easey, s);
         }
@@ -119,7 +134,7 @@ const HelloSketch = () => {
 
         // For every letter in word, draw a line between their positions
         for(let i = 0; i < word.length - 1; i++) {
-            p5.stroke(246,37,6);
+            p5.stroke(0,0,0);
             p5.strokeWeight(1.5);
 
             // if letter is a space, dont add line before or after the letter
@@ -133,7 +148,7 @@ const HelloSketch = () => {
         // For every letter in word, display them
         for(let i = 0; i < word.length; i++) {
             p5.noStroke();
-            letters[i].show();
+            letters[i].show(p5.mouseX, p5.mouseY);
         }
 
         // Every time countertime hits the counter, reset it (manual clock)

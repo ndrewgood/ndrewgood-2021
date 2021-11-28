@@ -44,6 +44,16 @@ a {
     }
 }
 
+::selection {
+    background: none; /* WebKit/Blink Browsers */
+    color: #f62506;
+}
+
+::-moz-selection {
+    background: none; /* Gecko Browsers */
+    color: #f62506;
+}
+
 //
 // BACKGROUND COLORS
 //
