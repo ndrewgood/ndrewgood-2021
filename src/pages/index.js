@@ -18,23 +18,28 @@ const Nav = ({color}) => {
     navigator.clipboard.writeText("hey@ndrewgood.com");
     setEmail("Copied");
   }
+  if (typeof window !== "undefined") {
 
-  return (
-    <div className={"center-container nav-container "+ color}>
-      <nav className="center-margin">
-        <div className="links">
-          <div className="left">
-            <a href="/">@ndrewgood</a>
+    return (
+      <div className={"center-container nav-container "+ color}>
+        <nav className="center-margin">
+          <div className="links">
+            <div className="left">
+              <a href="/">@ndrewgood</a>
+            </div>
+            <div className="right">
+              <span className={email == "Copy" ? "copy" : null} onMouseEnter={()=>setEmail("Copy")} onMouseLeave={()=>setEmail("Email")} onClick={()=>emailOnClick()}>{email}</span>
+              <a target="_blank" href="https://docs.google.com/document/d/1x_PenvOjmvEvuvBfDN1WLW0QFO7iYJlkzArQvboT2Us/edit?usp=sharing">Resume</a>
+            </div>
           </div>
-          <div className="right">
-            <span className={email == "Copy" ? "copy" : null} onMouseEnter={()=>setEmail("Copy")} onMouseLeave={()=>setEmail("Email")} onClick={()=>emailOnClick()}>{email}</span>
-            <a target="_blank" href="https://docs.google.com/document/d/1x_PenvOjmvEvuvBfDN1WLW0QFO7iYJlkzArQvboT2Us/edit?usp=sharing">Resume</a>
-          </div>
-        </div>
-        <div className="bar"></div>
-      </nav>  
-    </div>
-  )
+          <div className="bar"></div>
+        </nav>  
+      </div>
+    )
+} else {
+    return null
+}
+
 
 }
 
