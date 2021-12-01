@@ -73,6 +73,19 @@ const Footer = () => {
 
 }
 
+const P5sketch = () => {
+  if (typeof window !== "undefined") {
+    return (
+      <div className="p5-parent">
+          <HelloSketch />
+      </div>
+      )
+} else {
+    return null
+}
+
+}
+
 const IndexPage = () => (
   <Layout>
     <Helmet
@@ -81,7 +94,7 @@ const IndexPage = () => (
         class: bgColor
       }}
     />
-    <HelloSketch />
+    <P5sketch />
     <Nav color={bgColor} />
     <p className="first center-margin">My name is Andrew Goodridge, I'm a designer and developer who loves to make digital products of all shapes and sizes. I’m also an incoming Interaction Designer at <a target="_blank" href="https://design.google">Google</a>.</p>
     <p className="center-margin">While my website is currently <i>under construction</i>, I thought that this would be a great opportunity to showcase my archived personal websites. I started making personal websites during my senior year of highschool, and since then have grown significantly as a design, developer, and person. Websites have been left completely untouched, so be nice! :)</p>
