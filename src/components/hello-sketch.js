@@ -1,11 +1,17 @@
-import React from "react"
-import Sketch from 'react-p5';
+import React, {useEffect, useState} from "react"
+
+let Sketch
+
+if (typeof window !== "undefined") {
+  Sketch = require("react-p5")
+}
+
 
 const HelloSketch = () => {
 
-    // Variables - Canvas
+    // Variables - Canvas/Browser
     let width = 800;
-    let height = 400;
+    let height = 450;
 
     // Variables - Letters
     let letters = [];
@@ -131,6 +137,9 @@ const HelloSketch = () => {
 	const draw = (p5) => {
         // makes transparent background
         p5.clear();
+        // Resize handler
+        windowResized(p5);
+        console.log(width);
 
         // For every letter in word, draw a line between their positions
         for(let i = 0; i < word.length - 1; i++) {
@@ -165,10 +174,30 @@ const HelloSketch = () => {
             countertime = 0;
         }
 
-
 	};
 
-    return <Sketch className="hero" setup={setup} draw={draw} />
+    // Resize
+
+    const windowResized = (p5) => {
+        
+        if (typeof window !== "undefined") {
+            if (window.innerWidth < 820) {
+                width = window.innerWidth - 40;
+                p5.resizeCanvas(window.innerWidth - 40, 450);
+            } else {
+                width = 800;
+                p5.resizeCanvas(800, 450); 
+            }
+        }
+
+    };
+
+    
+    if (typeof window !== "undefined") {
+        return <Sketch className="hero center-margin" setup={setup} draw={draw} />
+    } else {
+        return null
+    }
 }
 
 export default HelloSketch
