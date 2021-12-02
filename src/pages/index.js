@@ -58,11 +58,19 @@ const Website = ({year, title, stack, link, color, order}) => {
 
   const [backgroundColor, setColor] = useState(color);
 
+  const bgColors = [
+    "bg-tan",
+    "bg-green",
+    "bg-blue",
+    "bg-purple",
+    "bg-yellow"
+  ]
+
   return(
     <a className="website" href={link} onMouseEnter={() => {setHoverStatus(true); console.log(backgroundColor)}} onMouseLeave={() => {setHoverStatus(false); console.log(backgroundColor)}}>
-      <span className={"title " + backgroundColor}>{title}</span>
+      <span className={"title " + bgColors[order]}>{title}</span>
       <span className="year">{backgroundColor}, {order}</span>
-      <span className={"stack " + backgroundColor}>{stack}</span>
+      <span className={"stack " + bgColors[order]}>{stack}</span>
     </a>
   )
 }
