@@ -54,23 +54,12 @@ const Nav = ({color}) => {
 
 const Website = ({year, title, stack, link, color, order}) => {
 
-  const [hoverStatus, setHoverStatus] = useState(null)
-
-  const [backgroundColor, setColor] = useState(color);
-
-  const bgColors = [
-    "bg-tan",
-    "bg-green",
-    "bg-blue",
-    "bg-purple",
-    "bg-yellow"
-  ]
   if (typeof window !== "undefined") {
     return(
-      <a className={"website" + color} href={link} onMouseEnter={() => {setHoverStatus(true); console.log(backgroundColor)}} onMouseLeave={() => {setHoverStatus(false); console.log(backgroundColor)}}>
-        <span className={"title " + bgColors[order]}>{title}</span>
-        <span className="year">{backgroundColor}, {order}</span>
-        <span className={"stack " + bgColors[order]}>{stack}</span>
+      <a className={"website"} href={link}>
+        <span className={"title " + color}>{title}</span>
+        <span className="year">{year}</span>
+        <span className={"stack " + color}>{stack}</span>
       </a>
     )
 } else {
