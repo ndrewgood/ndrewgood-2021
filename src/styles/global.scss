@@ -42,18 +42,28 @@ a {
     transition: .2s;
     &:hover {
         opacity: 1;
+        cursor: pointer;
     }
 }
 
 ::selection {
     background: none; /* WebKit/Blink Browsers */
-    color: #f62506;
+    // 
 }
 
 ::-moz-selection {
     background: none; /* Gecko Browsers */
-    color: #f62506;
 }
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
 
 //
 // BACKGROUND COLORS
@@ -61,10 +71,37 @@ a {
 
 .bg-tan {
     background-color: #EADAD0;
+    ::selection {
+        color: rgb(246, 37, 6);
+    }
 }
 
 .bg-green {
-    background-color: #C9DCC4;
+    background-color: #b4dbc7;
+    ::selection {
+        color: rgb(0, 124, 255);
+    }
+}
+
+.bg-blue {
+    background-color:  #b0c1e7;
+    ::selection{
+        color: rgb(156, 243, 223);
+    }
+}
+
+.bg-purple {
+    background-color: #cfb4dd;
+    ::selection {
+        color: rgb(255, 24, 225);
+    }
+}
+
+.bg-yellow {
+    background-color: #ddd6a4;
+    ::selection {
+        color: rgb(239, 121, 51);
+    }
 }
 
 
@@ -83,12 +120,21 @@ a {
 }
 
 .hero {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 
 .first {
     margin-top: 60px !important;
+}
+
+.andrew {
+    position: absolute;
+    z-index: 400;
+    opacity: .95;
+    @media only screen and (max-width: 800px) {
+        display: none !important;
+    }
 }
 
 //
@@ -237,7 +283,7 @@ footer {
         opacity: .5;
         max-width: 420px;
         @media only screen and (max-width: 800px) {
-            margin-top: 30px;
+            display: none;
         }
         &:hover {
             opacity: 1;

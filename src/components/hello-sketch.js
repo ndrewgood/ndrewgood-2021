@@ -7,10 +7,19 @@ if (typeof window !== "undefined") {
 }
 
 
-const HelloSketch = () => {
+const HelloSketch = ({ color }) => {
+
+
 
     // Variables - Canvas/Browser
     let width = 800;
+    if (typeof window !== "undefined") {
+        if (window.innerWidth < 820) {
+            width = window.innerWidth - 40;
+        } else {
+            width = 800;
+        }
+    }
     let height = 450;
 
     // Variables - Letters
@@ -42,7 +51,7 @@ const HelloSketch = () => {
     //
     class Letter {
         // Class variables
-        constructor(p5, x, y, letter, i) {
+        constructor(p5, x, y, letter, i, color) {
             this.p5 = p5; // p5 reference (bcus react...)
             this.x = x; // initial x pos
             this.y = y; // initial y pos
@@ -58,6 +67,34 @@ const HelloSketch = () => {
             this.i = i; // array pos
             this.mx = 0;
             this.my = 0;
+            this.color = color
+            this.bgColors = [
+                {
+                    // bg-tan
+                    r: 234, g: 218, b: 208,
+                    r2: 246, g2: 37, b2: 6
+                },
+                {
+                    // bg-green
+                    r: 180, g: 219, b: 199,
+                    r2: 0, g2: 124, b2: 225
+                },
+                {
+                    // bg-blue
+                    r: 176, g: 193, b: 231,
+                    r2: 156, g2: 243, b2: 223 
+                },
+                {
+                    // bg-purple
+                    r: 207, g: 180, b: 221,
+                    r2: 255, g2: 24, b2: 255
+                }, 
+                {
+                    // bg-yellow
+                    r: 221, g: 214, b: 164,
+                    r2: 239, g2: 121, b2: 51
+                }
+            ] 
         }
 
         // Change position
@@ -84,6 +121,9 @@ const HelloSketch = () => {
 
         // Display Letter
         show(mx, my) {
+            
+            // console.log(this.color);
+
             // creates linear path between initial and new pos
             this.cx += this.tickx;
             this.cy += this.ticky;
@@ -102,7 +142,7 @@ const HelloSketch = () => {
             }
 
             // draws letter
-            this.p5.fill(234,218,208);
+            this.p5.fill(this.bgColors[this.color].r, this.bgColors[this.color].g, this.bgColors[this.color].b);
             this.p5.ellipse(this.easex, this.easey, 40);
 
             this.p5.textSize(18);
@@ -110,7 +150,7 @@ const HelloSketch = () => {
             this.p5.textFont("Courier Prime");
             this.p5.textStyle(this.p5.ITALIC);
             if ((this.mx > this.easex - 20 && this.mx < this.easex + 20) && (this.my > this.easey - 20 && this.my < this.easey + 20)) {
-                this.p5.fill(246,37,6);
+                this.p5.fill(this.bgColors[this.color].r2,this.bgColors[this.color].g2,this.bgColors[this.color].b2);
             } else {
                 this.p5.fill(0,0,0);
             }
@@ -127,7 +167,7 @@ const HelloSketch = () => {
 
         // For each letter in word, create new Letter class and shuffle their position
         for(let i = 0; i < word.length; i++) {
-            letters.push(new Letter(p5, p5.random(width), p5.random(height), word.split('')[i], i));
+            letters.push(new Letter(p5, p5.random(width), p5.random(height), word.split('')[i], i, color));
             letters[i].shuffle();
         }
 	};
@@ -139,7 +179,6 @@ const HelloSketch = () => {
         p5.clear();
         // Resize handler
         windowResized(p5);
-        console.log(width);
 
         // For every letter in word, draw a line between their positions
         for(let i = 0; i < word.length - 1; i++) {
