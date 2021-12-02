@@ -52,7 +52,9 @@ const Nav = ({color}) => {
 
 }
 
-const Website = ({year, title, stack, link, color}) => {
+const Website = ({year, title, stack, link, color, order}) => {
+  
+  console.log(order);
 
   return(
     <a className="website" href={link}>
@@ -193,7 +195,7 @@ const IndexPage = () => {
       <Nav color={bgColor} />
       <Paragraphs />
        {/* https://github.com/ndrewgood/pwb2 */}
-      <Website year="Nov. 2017 - July 2018" title="My first website" stack="Jekyll, Github Pages" link="https://2017.ndrewgood.com" color={bgColor}/>
+      <Website year="Nov. 2017 - July 2018" title="My first website" stack="Jekyll, Github Pages" link="https://2017.ndrewgood.com" color={bgColor} order={colorOrder}/>
       {/* https://github.com/ndrewgood/pwb3-gatsby */}
       <Website year="July 2018 - Sept. 2018" title="First Gatsby website" stack="Gatsby, Github Pages" link="https://2018.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/pwb4 */}
