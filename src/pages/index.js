@@ -55,12 +55,19 @@ const Nav = ({color}) => {
 const Website = ({year, title, stack, link, color, order}) => {
   
   console.log(order);
+  const bgColors = [
+    "bg-tan",
+    "bg-green",
+    "bg-blue",
+    "bg-purple",
+    "bg-yellow"
+  ]
 
   return(
     <a className="website" href={link}>
-      <span className={"title " + color}>{title}</span>
+      <span className={"title " + bgColors[order]}>{title}</span>
       <span className="year">{year}</span>
-      <span className={"stack " + color}>{stack}</span>
+      <span className={"stack " + bgColors[order]}>{stack}</span>
     </a>
   )
 }
