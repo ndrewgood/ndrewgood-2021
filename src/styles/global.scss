@@ -137,6 +137,23 @@ a {
     }
 }
 
+.andrew-photos {
+    @media only screen and (max-width: 800px) {
+        display: none !important;
+    }
+}
+
+.andrew-noPhotos {
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: $type-color;
+    margin-top: 30px !important;
+    line-height: 2.8rem;
+    @media only screen and (min-width: 800px) {
+        display: none !important;
+    }
+}
+
 //
 // NAV
 //

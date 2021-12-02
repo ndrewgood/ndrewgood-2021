@@ -52,22 +52,17 @@ const Nav = ({color}) => {
 
 }
 
-const Website = ({year, title, stack, link, color, order}) => {
-  
-  console.log(order);
-  const bgColors = [
-    "bg-tan",
-    "bg-green",
-    "bg-blue",
-    "bg-purple",
-    "bg-yellow"
-  ]
+const Website = ({year, title, stack, link, color}) => {
+
+  const [hoverStatus, setHoverStatus] = useState(null)
+
+  const [backgroundColor, setColor] = useState(color);
 
   return(
-    <a className="website" href={link}>
-      <span className={"title " + bgColors[order]}>{title}</span>
+    <a className="website" href={link} onMouseEnter={() => {setHoverStatus(true); console.log(hoverStatus)}} onMouseLeave={() => {setHoverStatus(false); console.log(hoverStatus)}}>
+      <span className={"title " + backgroundColor}>{title}</span>
       <span className="year">{year}</span>
-      <span className={"stack " + bgColors[order]}>{stack}</span>
+      <span className={"stack " + backgroundColor}>{stack}</span>
     </a>
   )
 }
@@ -166,8 +161,8 @@ const Paragraphs = () => {
   return (
     <>
       <img className="andrew" src={images[andrewOrder].src} alt={images[andrewOrder].alt} style={{"width": images[andrewOrder].width, "top": mouse[1] + 20 + "px", "left": mouse[0] + 20 + "px", "display": andrewStatus ? "block" : "none"}} />
-      <p className="first center-margin">My name is <a className="noselect" onMouseMove={(e) => setMouse([e.clientX, e.pageY])} onMouseEnter={() => { setAndrewStatus(true); displayAndrew(); }} onMouseLeave={() => setAndrewStatus(false)} onClick={() => displayAndrew()}>Andrew</a> Goodridge, I'm a designer and developer who loves to make digital products of all shapes and sizes. I’m also an incoming Interaction Designer at <a target="_blank" href="https://design.google">Google</a>.</p>
-      <p className="center-margin">While my website is currently <i>under construction</i>, I thought that this would be a great opportunity to showcase my archived personal websites. I started making personal websites during my senior year of highschool, and since then have grown significantly as a design, developer, and person.</p>
+      <p className="first center-margin">My name is <a className="noselect andrew-photos" onMouseMove={(e) => setMouse([e.clientX, e.pageY])} onMouseEnter={() => { setAndrewStatus(true); displayAndrew(); }} onMouseLeave={() => setAndrewStatus(false)} onClick={() => displayAndrew()}>Andrew</a><span className="andrew-noPhotos">Andrew</span> Goodridge, I'm a designer and developer who loves to make digital products of all shapes and sizes. I’m also an incoming Interaction Designer at <a target="_blank" href="https://design.google">Google</a>.</p>
+      <p className="center-margin">While my website is currently <i>under construction</i>, I thought that this would be a great opportunity to showcase my archived personal websites. I started making personal websites during my senior year of highschool, and since then have grown significantly as a designer, developer, and person.</p>
       <p className="center-margin">Always open to chat, feel free to reach out via <a href="mailto:hey@ndrewgood.com">email</a> or DM on any of my social channels! ✌️</p>
     </>
   )
