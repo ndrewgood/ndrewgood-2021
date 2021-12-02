@@ -64,13 +64,16 @@ const Nav = ({color}) => {
 
 }
 
-const Website = ({year, title, stack, link}) => (
-  <a className="website" href={link}>
-    <span className={"title " + bgColor}>{title}</span>
-    <span className="year">{year}</span>
-    <span className={"stack " + bgColor}>{stack}</span>
-  </a>
-)
+const Website = ({year, title, stack, link, color}) => {
+
+  return(
+    <a className="website" href={link}>
+      <span className={"title " + color}>{title}</span>
+      <span className="year">{year}</span>
+      <span className={"stack " + color}>{stack}</span>
+    </a>
+  )
+}
 
 const Footer = () => {
 
@@ -189,15 +192,15 @@ const IndexPage = () => {
       <Nav color={bgColor} />
       <Paragraphs />
        {/* https://github.com/ndrewgood/pwb2 */}
-      <Website year="Nov. 2017 - July 2018" title="My first website" stack="Jekyll, Github Pages" link="https://2017.ndrewgood.com"/>
+      <Website year="Nov. 2017 - July 2018" title="My first website" stack="Jekyll, Github Pages" link="https://2017.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/pwb3-gatsby */}
-      <Website year="July 2018 - Sept. 2018" title="First Gatsby website" stack="Gatsby, Github Pages" link="https://2018.ndrewgood.com"/>
+      <Website year="July 2018 - Sept. 2018" title="First Gatsby website" stack="Gatsby, Github Pages" link="https://2018.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/pwb4 */}
-      <Website year="Sept. 2018 - Aug. 2019" title="Freshman year portfolio" stack="Vanilla, Github Pages" link="https://2019.ndrewgood.com"/>
+      <Website year="Sept. 2018 - Aug. 2019" title="Freshman year portfolio" stack="Vanilla, Github Pages" link="https://2019.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/website2020 */}
-      <Website year="Aug. 2019 - July 2020" title="Sophomore year portfolio" stack="Vanilla, Firebase" link="https://2020.ndrewgood.com"/>
+      <Website year="Aug. 2019 - July 2020" title="Sophomore year portfolio" stack="Vanilla, Firebase" link="https://2020.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/ndrewgood-sanity-gatsby */}
-      <Website year="July 2020 - Dec. 2021" title="Junior year portfolio" stack="Gatsby, Sanity, Netlify" link="https://2021.ndrewgood.com"/>
+      <Website year="July 2020 - Dec. 2021" title="Junior year portfolio" stack="Gatsby, Sanity, Netlify" link="https://2021.ndrewgood.com" color={bgColor}/>
       <Footer />
   
   
