@@ -22,6 +22,9 @@ p {
     color: $type-color;
     margin-top: 30px !important;
     line-height: 2.8rem;
+    b {
+        font-weight: 600;
+    }
 }
 
 span {
@@ -244,6 +247,9 @@ nav {
         font-style: italic;
         padding: 0px 15px;
         text-align: center;
+        @media only screen and (max-width: 800px) {
+            font-size: 1.3rem;
+        }
     }
     .stack {
         top: 100%;
@@ -285,9 +291,6 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         margin-top: 20px;
-        @media only screen and (max-width: 800px) {
-            margin-top: 30px;
-        }
         .right {
             a {
                 margin-left: 40px;

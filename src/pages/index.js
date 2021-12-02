@@ -164,7 +164,7 @@ const Paragraphs = () => {
     <>
       <img className="andrew" src={images[andrewOrder].src} alt={images[andrewOrder].alt} style={{"width": images[andrewOrder].width, "top": mouse[1] + 20 + "px", "left": mouse[0] + 20 + "px", "display": andrewStatus ? "block" : "none"}} />
       <p className="first center-margin">My name is <a className="noselect andrew-photos" onMouseMove={(e) => setMouse([e.clientX, e.pageY])} onMouseEnter={() => { setAndrewStatus(true); displayAndrew(); }} onMouseLeave={() => setAndrewStatus(false)} onClick={() => displayAndrew()}>Andrew</a><span className="andrew-noPhotos">Andrew</span> Goodridge, I'm a designer and developer who loves to make digital products of all shapes and sizes. I’m also an incoming Interaction Designer at <a target="_blank" href="https://design.google">Google</a>.</p>
-      <p className="center-margin">While my website is currently <i>under construction</i>, I thought that this would be a great opportunity to showcase my archived personal websites. I started making personal websites during my senior year of highschool, and since then have grown significantly as a designer, developer, and person.</p>
+      <p className="center-margin">While my website is currently <i>under construction</i>, I thought that this would be a great opportunity to publicly archive my past personal websites. I started making personal websites during my senior year of highschool, and since then have grown significantly as a designer, developer, and person.</p>
       <p className="center-margin">Always open to chat, feel free to reach out via <a href="mailto:hey@ndrewgood.com">email</a> or DM on any of my social channels! ✌️</p>
     </>
   )
