@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import * as moment from "moment"
 
@@ -18,18 +18,6 @@ import '../styles/global.scss'
 const getRandom = (max) => {
   return Math.floor(Math.random() * max);
 }
-
-const bgColors = [
-  "bg-tan",
-  "bg-green",
-  "bg-blue",
-  "bg-purple",
-  "bg-yellow"
-]
-
-let colorOrder = getRandom(bgColors.length);
-
-let bgColor = bgColors[colorOrder]
 
 const Nav = ({color}) => {
 
@@ -102,12 +90,12 @@ const Footer = () => {
 
 }
 
-const P5sketch = () => {
+const P5sketch = ({order}) => {
 
   if (typeof window !== "undefined") {
     return (
       <div className="p5-parent">
-          <HelloSketch color={colorOrder}/>
+          <HelloSketch color={order}/>
       </div>
       )
   } else {
@@ -179,6 +167,19 @@ const Paragraphs = () => {
 
 const IndexPage = () => {
 
+  const bgColors = [
+    "bg-tan",
+    "bg-green",
+    "bg-blue",
+    "bg-purple",
+    "bg-yellow"
+  ]
+
+  let colorOrder;
+  let bgColor;
+
+  colorOrder = getRandom(bgColors.length);
+  bgColor = bgColors[colorOrder]
 
   return(
     <Layout>
@@ -188,22 +189,20 @@ const IndexPage = () => {
           class: bgColor
         }}
       />
-      <P5sketch />
+      <P5sketch order={colorOrder}/>
       <Nav color={bgColor} />
       <Paragraphs />
        {/* https://github.com/ndrewgood/pwb2 */}
-      <Website year="Nov. 2017 - July 2018" title="My first website" stack="Jekyll, Github Pages" link="https://2017.ndrewgood.com" color={bgColors[colorOrder]}/>
+      <Website year="Nov. 2017 - July 2018" title="My first website" stack="Jekyll, Github Pages" link="https://2017.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/pwb3-gatsby */}
-      <Website year="July 2018 - Sept. 2018" title="First Gatsby website" stack="Gatsby, Github Pages" link="https://2018.ndrewgood.com" color={bgColors[colorOrder]}/>
+      <Website year="July 2018 - Sept. 2018" title="First Gatsby website" stack="Gatsby, Github Pages" link="https://2018.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/pwb4 */}
-      <Website year="Sept. 2018 - Aug. 2019" title="Freshman year portfolio" stack="Vanilla, Github Pages" link="https://2019.ndrewgood.com" color={bgColors[colorOrder]}/>
+      <Website year="Sept. 2018 - Aug. 2019" title="Freshman year portfolio" stack="Vanilla, Github Pages" link="https://2019.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/website2020 */}
-      <Website year="Aug. 2019 - July 2020" title="Sophomore year portfolio" stack="Vanilla, Firebase" link="https://2020.ndrewgood.com" color={bgColors[colorOrder]}/>
+      <Website year="Aug. 2019 - July 2020" title="Sophomore year portfolio" stack="Vanilla, Firebase" link="https://2020.ndrewgood.com" color={bgColor}/>
       {/* https://github.com/ndrewgood/ndrewgood-sanity-gatsby */}
-      <Website year="July 2020 - Dec. 2021" title="Junior year portfolio" stack="Gatsby, Sanity, Netlify" link="https://2021.ndrewgood.com" color={bgColors[colorOrder]}/>
+      <Website year="July 2020 - Dec. 2021" title="Junior year portfolio" stack="Gatsby, Sanity, Netlify" link="https://2021.ndrewgood.com" color={bgColor}/>
       <Footer />
-  
-  
     </Layout>
   )
 }
