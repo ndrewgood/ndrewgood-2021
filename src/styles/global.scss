@@ -229,6 +229,7 @@ nav {
     margin: auto;
     margin-top: 80px;
     position: relative;
+    transition: width .5s;
 
     @media only screen and (max-width: 800px) {
         width: calc(100vw - 40px);
@@ -259,7 +260,6 @@ nav {
         font-style: italic;
         transition: .2s;
     }
-    transition: width .5s;
     &:hover {
         @media only screen and (min-width: 800px) {
             width: 850px;
